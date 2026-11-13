@@ -13,7 +13,7 @@ API_TOKEN = os.getenv('8589284419:AAFGfNgr8LjyCC40q7nuvAl7Aq-Y2f-JDT0', '')
 TRAVELPAYOUTS_TOKEN = os.getenv('71876b59812fee6e1539f9365e6a12dd', '') 
 
 MY_AFFILIATE_LINK = "https://aviasales.tpo.lu/uvx5sy8B"
-# Ин ҷо метавонӣ линкҳои партнёрии худро аз кабинети Travelpayouts барои Поезд ва Автобус иваз кунӣ
+# Линки партнёрӣ барои Поезд ва Автобус (метавонӣ аз кабинети Travelpayouts линки худро гузорӣ)
 TUTU_TRAIN_LINK = "https://tutu.ru" 
 TUTU_BUS_LINK = "https://tutu.ru"     
 
@@ -30,11 +30,12 @@ app = Flask('')
 def home():
     return "Бот фаъол аст!"
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+def run_flask():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
 
 def keep_alive():
-    t = Thread(target=run)
+    t = Thread(target=run_flask)
     t.daemon = True
     t.start()
 
@@ -298,7 +299,6 @@ def handle_text(message):
             bot.send_message(cid, "Шаҳр ёфт нашуд. Лутфан дубора номи шаҳрро нависед:")
 
 if __name__ == '__main__':
-    keep_alive()  
+    keep_alive()  # Веб-сервер дар пасманзар (background) кор мекунад
     print("Бот дар ҳоли кор аст...")
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+    bot.infinity_polling()  # Бот паёмҳоро аз Телеграм мегирад
