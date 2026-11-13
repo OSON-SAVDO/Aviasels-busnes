@@ -14,7 +14,7 @@ TRAVELPAYOUTS_TOKEN = "71876b59812fee6e1539f9365e6a12dd"
 
 MY_AFFILIATE_LINK = "https://aviasales.tpo.lu/uvx5sy8B"
 # Линки партнёрӣ барои Поезд ва Автобус (метавонӣ аз кабинети Travelpayouts линки худро гузорӣ)
-TUTU_TRAIN_LINK = "https://tutu.ru" 
+TUTU_TRAIN_LINK = "https://tutu.tpo.lu/ePwqaY9N" 
 TUTU_BUS_LINK = "https://tutu.ru"     
 
 MARKER = '701004' 
